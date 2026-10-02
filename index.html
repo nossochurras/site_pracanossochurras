@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a0905">
+  <meta name="description" content="Praça Nosso Churras Gastrobar: churrasco, gastronomia e encontros no Clube MESC, em São Bernardo do Campo. Confira o endereço e venha conhecer.">
+  <title>Praça Nosso Churras Gastrobar | Nosso sabor, seu ponto de encontro</title>
+  <link rel="icon" type="image/png" href="assets/logo-vermelho.png">
+  <style>
+    :root {
+      --red: #b73527;
+      --ink: #1a0905;
+      --gold: #c7ad70;
+      --cream: #fff0de;
+      --heading: "Panton Rust", Impact, "Arial Black", sans-serif;
+      --body: "Pacaembu Family", "Pacaembu", Arial, sans-serif;
+      --script: "High Spirited", cursive;
+      --page-pad: clamp(22px, 5vw, 84px);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { background: var(--red); color: var(--cream); }
+    .skip-link { position: absolute; z-index: 100; top: -100px; left: 16px; padding: 12px 16px; background: var(--cream); color: var(--ink); }
+    .skip-link:focus { top: 16px; }
+    .eyebrow { margin: 0; font-size: 12px; font-weight: 800; line-height: 1.4; letter-spacing: .19em; text-transform: uppercase; }
+    .section-inner { max-width: 1600px; margin-inline: auto; padding-inline: var(--page-pad); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 15px 23px; border: 1px solid currentColor; border-radius: 3px; background: transparent; color: inherit; font-size: 12px; font-weight: 800; line-height: 1.2; letter-spacing: .11em; text-align: center; text-decoration: none; text-transform: uppercase; transition: background .25s, color .25s, transform .25s; }
+    .btn:hover { background: currentColor; transform: translateY(-2px); }
+    .btn:hover span { color: var(--ink); }
+    .btn:focus-visible, .nav-links a:focus-visible, .menu-toggle:focus-visible, .text-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+    .text-link { display: inline-flex; gap: 10px; align-items: center; padding-bottom: 5px; border-bottom: 1px solid currentColor; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+    .text-link:hover { color: var(--red); }
+
+    .hero { position: relative; display: flex; flex-direction: column; min-height: min(900px, 100svh); overflow: hidden; background: var(--ink); color: var(--cream); }
+    .hero-photo { position: absolute; top: 0; right: 0; width: 49%; height: 100%; object-fit: cover; object-position: center 39%; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, var(--ink) 48%, rgba(26,9,5,.25) 57%, transparent 72%); pointer-events: none; }
+    .site-header { position: relative; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 30px; width: 100%; max-width: 1600px; margin: 0 auto; padding: 18px var(--page-pad); }
+    .brand { width: clamp(118px, 11vw, 176px); aspect-ratio: 691 / 383; flex: 0 0 auto; overflow: hidden; }
+    .brand img { width: 100%; height: auto; }
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3vw, 48px); }
+    .nav-links a { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .nav-links a:not(.btn):hover { color: var(--gold); }
+    .nav-links .btn { min-height: 44px; padding: 13px 18px; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--cream); border-radius: 3px; background: transparent; color: var(--cream); cursor: pointer; }
+    .menu-toggle span { display: block; width: 19px; height: 1px; margin: 5px auto; background: currentColor; }
+    .hero-body { position: relative; z-index: 2; display: flex; align-items: center; flex: 1; width: 100%; max-width: 1600px; margin: auto; padding: 85px var(--page-pad); }
+    .hero-copy { max-width: 690px; }
+    .hero h1 { max-width: 680px; margin: 0 0 25px; font-family: var(--heading); font-size: clamp(64px, 7.3vw, 113px); font-weight: 900; line-height: .84; letter-spacing: -.055em; text-transform: uppercase; }
+    .hero h1 em { display: block; color: var(--gold); font-style: normal; }
+    .hero h1 .hero-final > span { display: block; }
+    .hero-lead { max-width: 525px; margin: 0; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.45; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 21px 28px; margin-top: 37px; }
+
+    .ticker { overflow: hidden; border-block: 1px solid var(--ink); background: var(--gold); color: var(--ink); }
+    .ticker-track { display: flex; width: max-content; gap: 0; animation: drift 28s linear infinite; }
+    .ticker-track span { display: inline-block; padding: 16px 25px; font-family: var(--heading); font-size: clamp(19px, 2.5vw, 35px); font-weight: 900; letter-spacing: -.035em; text-transform: uppercase; white-space: nowrap; }
+    .ticker-track i { color: var(--red); font-style: normal; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+
+    .intro { padding-block: clamp(95px, 13vw, 190px); }
+    .intro-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(275px, .65fr); gap: clamp(55px, 9vw, 170px); align-items: end; }
+    .intro .eyebrow, .offer .eyebrow, .visit .eyebrow { color: var(--red); }
+    .display { margin: 27px 0 0; font-family: var(--heading); font-size: clamp(52px, 6.5vw, 108px); font-weight: 900; line-height: .92; letter-spacing: -.055em; text-transform: uppercase; }
+    .display .accent { color: var(--red); }
+    .intro-side { padding-bottom: 5px; }
+    .intro-side p { margin: 0 0 25px; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.45; }
+    .intro-side .small { max-width: 440px; margin-bottom: 28px; font-size: 14px; line-height: 1.6; }
+
+    .photo-band { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 650px; overflow: hidden; background: var(--ink); color: var(--cream); }
+    .photo-band img { width: 100%; height: 100%; min-height: 650px; object-fit: cover; object-position: center; }
+    .photo-band-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(60px, 8vw, 130px); }
+    .photo-band-copy .eyebrow { color: var(--gold); }
+    .photo-band h2 { max-width: 600px; margin: 22px 0 30px; font-family: var(--heading); font-size: clamp(48px, 5.3vw, 86px); font-weight: 900; line-height: .94; letter-spacing: -.05em; text-transform: uppercase; }
+    .photo-band p:not(.eyebrow) { max-width: 430px; margin: 0; font-size: 17px; line-height: 1.6; }
+
+    .offer { padding-block: clamp(95px, 12vw, 165px); }
+    .offer-head { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 55px; }
+    .offer-head .display { max-width: 890px; margin-top: 17px; }
+    .offer-head > p { max-width: 320px; margin: 0 0 7px; font-size: 16px; line-height: 1.55; }
+    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    .offer-card { min-height: 258px; padding: 36px 35px 30px 0; }
+    .offer-card + .offer-card { padding-left: 35px; border-left: 1px solid var(--ink); }
+    .offer-card .number { color: var(--red); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+    .offer-card h3 { margin: 32px 0 17px; font-family: var(--heading); font-size: clamp(28px, 2.9vw, 45px); line-height: .95; letter-spacing: -.035em; text-transform: uppercase; }
+    .offer-card p { max-width: 305px; margin: 0; font-size: 15px; line-height: 1.55; }
+
+    .space { padding-block: 0 clamp(95px, 12vw, 175px); }
+    .space-title { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 32px; }
+    .space-title h2 { max-width: 740px; margin: 0; font-family: var(--heading); font-size: clamp(43px, 5.2vw, 83px); line-height: .94; letter-spacing: -.05em; text-transform: uppercase; }
+    .space-title p { max-width: 275px; margin: 0 0 5px; font-size: 14px; line-height: 1.55; }
+    .space-main-photo { display: flex; align-items: center; justify-content: center; margin: 0 0 18px; padding: 24px; background: var(--ink); }
+    .space-main-photo img { width: auto; height: min(80vh, 760px); max-width: 100%; object-fit: contain; }
+    .space-visual { display: grid; grid-template-columns: 1.25fr .75fr; gap: 18px; }
+    .space-visual figure { min-width: 0; margin: 0; }
+    .space-visual img { width: 100%; height: 560px; object-fit: cover; }
+    .space-visual figure:first-child img { object-position: 53% center; }
+
+    .visit { padding-block: clamp(95px, 12vw, 170px); background: var(--gold); }
+    .visit-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(50px, 8vw, 135px); align-items: center; }
+    .visit h2 { margin: 25px 0 28px; font-family: var(--heading); font-size: clamp(54px, 6.4vw, 102px); line-height: .9; letter-spacing: -.05em; text-transform: uppercase; }
+    .visit-lead { max-width: 410px; margin: 0 0 32px; font-size: 19px; line-height: 1.5; }
+    address { font-style: normal; }
+    address strong { display: block; margin-bottom: 10px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+    address span { display: block; font-size: 18px; line-height: 1.45; }
+    .visit-actions { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; margin-top: 34px; }
+    .visit-actions .btn:hover span { color: var(--gold); }
+    .access-note { max-width: 500px; margin: 30px 0 0; font-size: 13px; line-height: 1.5; }
+    .access-note a { text-underline-offset: 3px; }
+    .destination-card { display: flex; flex-direction: column; justify-content: space-between; min-height: 485px; padding: clamp(28px, 4vw, 55px); border: 1px solid var(--ink); background: var(--cream); }
+    .destination-card .eyebrow { color: var(--red); }
+    .destination-card strong { display: block; margin-top: 70px; font-family: var(--heading); font-size: clamp(45px, 5vw, 79px); line-height: .91; letter-spacing: -.05em; text-transform: uppercase; }
+    .destination-card-bottom { display: flex; justify-content: space-between; gap: 20px; align-items: end; padding-top: 20px; border-top: 1px solid var(--ink); }
+    .destination-card-bottom span { font-size: 14px; line-height: 1.4; }
+    .destination-card-bottom a { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+    .destination-card-bottom a:hover { color: var(--red); }
+
+    .footer { padding-block: 45px 28px; background: var(--ink); color: var(--cream); }
+    .footer-main { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding-bottom: 45px; }
+    .footer-logo-frame { display: block; width: 240px; aspect-ratio: 691 / 383; overflow: hidden; flex: 0 0 auto; }
+    .footer-logo { width: 100%; }
+    .footer-copy { max-width: 480px; margin: 0; font-family: var(--heading); font-size: clamp(31px, 3.8vw, 58px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 22px; border-top: 1px solid var(--gold); font-size: 12px; line-height: 1.5; }
+    .footer-bottom p { margin: 0; }
+    .footer-bottom a { text-decoration: none; border-bottom: 1px solid currentColor; }
+
+    .motion-ready [data-reveal] { opacity: 0; transform: translate3d(0, 25px, 0); transition: opacity .7s ease var(--reveal-delay, 0ms), transform .7s cubic-bezier(.22, 1, .36, 1) var(--reveal-delay, 0ms); }
+    .motion-ready [data-reveal="left"] { transform: translate3d(-28px, 0, 0); }
+    .motion-ready [data-reveal="right"] { transform: translate3d(28px, 0, 0); }
+    .motion-ready [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+    @media (max-width: 900px) {
+      .hero { min-height: 820px; }
+      .hero::after { background: linear-gradient(90deg, var(--ink) 0%, rgba(26,9,5,.95) 40%, rgba(26,9,5,.15) 78%); }
+      .intro-grid, .visit-grid { grid-template-columns: 1fr; }
+      .intro-side { max-width: 610px; }
+      .photo-band { grid-template-columns: 1fr 1fr; }
+      .photo-band-copy { padding: 50px; }
+      .offer-card { padding-right: 20px; }
+      .offer-card + .offer-card { padding-left: 20px; }
+      .space-visual img { height: 440px; }
+      .destination-card { min-height: 430px; }
+    }
+    @media (max-width: 700px) {
+      .site-header { padding-top: 18px; }
+      .brand { width: 115px; }
+      .menu-toggle { position: relative; z-index: 6; display: block; }
+      .nav-links { position: absolute; top: 100%; right: var(--page-pad); left: var(--page-pad); display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 22px 22px; border: 1px solid var(--gold); background: var(--ink); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a:not(.btn) { padding: 15px 0; border-bottom: 1px solid rgba(199,173,112,.45); }
+      .nav-links .btn { margin-top: 20px; }
+      .hero { min-height: 730px; }
+      .hero-photo { top: 0; width: 100%; height: 100%; object-position: center 46%; }
+      .hero::after { background: linear-gradient(180deg, rgba(26,9,5,.66) 0%, rgba(26,9,5,.14) 27%, rgba(26,9,5,.40) 48%, rgba(26,9,5,.85) 75%, rgba(26,9,5,.98) 100%); }
+      .hero-body { padding-top: 160px; padding-bottom: 57px; }
+      .hero h1 { font-size: clamp(40px, 12.5vw, 72px); }
+      .hero h1 .hero-final { display: block; font-size: .85em; white-space: nowrap; }
+      .hero h1 .hero-final > span { display: inline; }
+      .hero-lead { font-size: 17px; }
+      .intro { padding-block: 90px; }
+      .intro-grid { gap: 40px; }
+      .display { font-size: clamp(49px, 11vw, 72px); }
+      .photo-band { grid-template-columns: 1fr; }
+      .photo-band img { min-height: 340px; height: 340px; }
+      .photo-band-copy { min-height: 390px; padding: 62px var(--page-pad); }
+      .offer { padding-block: 95px; }
+      .offer-head, .space-title { align-items: start; flex-direction: column; gap: 18px; }
+      .offer-grid { grid-template-columns: 1fr; }
+      .offer-card { min-height: auto; padding: 30px 0 35px; }
+      .offer-card + .offer-card { padding: 30px 0 35px; border-top: 1px solid var(--ink); border-left: 0; }
+      .offer-card h3 { margin-top: 25px; }
+      .space-main-photo { padding: 0; }
+      .space-main-photo img { width: 100%; height: auto; }
+      .motion-ready [data-reveal="left"], .motion-ready [data-reveal="right"] { transform: translate3d(0, 25px, 0); }
+      .motion-ready [data-reveal].is-visible { transform: translate3d(0, 0, 0); }
+      .space-visual { grid-template-columns: 1fr; }
+      .space-visual img { height: 420px; }
+      .space-visual figure:nth-child(2) img { height: 290px; }
+      .visit { padding-block: 95px; }
+      .footer-main, .footer-bottom { flex-direction: column; align-items: start; }
+      .footer-logo-frame { width: 180px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <img class="hero-photo" src="assets/restaurante-fachada.jpg" alt="Entrada do Praça Nosso Churras Gastrobar" fetchpriority="high">
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Praça Nosso Churras, voltar ao início"><img src="assets/logo-claro.png" alt="Praça Nosso Churras Gastrobar"></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="nav" aria-label="Navegação principal">
+        <a href="#sobre">Nossa essência</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#espaco">O espaço</a>
+        <a class="btn" href="#visite"><span>Como chegar</span></a>
+      </nav>
+    </header>
+    <div class="hero-body" id="conteudo">
+      <div class="hero-copy">
+        <h1 id="hero-title">NOSSO <em>SABOR.</em> <span class="hero-final"><span>SEU</span> <span>ENCONTRO.</span></span></h1>
+        <p class="hero-lead">O churrasco tem um jeito especial de reunir pessoas. Aqui, cada pausa é um convite para ficar mais um pouco.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#visite"><span>Planeje sua visita</span></a>
+          <a class="text-link" href="#sobre">Descubra o Nosso Churras <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">
+    <span>Brasa <i>✦</i> Conexão <i>✦</i> Churrasco <i>✦</i> Encontro <i>✦</i></span>
+    <span>Brasa <i>✦</i> Conexão <i>✦</i> Churrasco <i>✦</i> Encontro <i>✦</i></span>
+  </div></div>
+
+  <main>
+    <section class="intro section-inner" id="sobre" aria-labelledby="sobre-title">
+      <div class="intro-grid">
+        <div data-reveal>
+          <p class="eyebrow">A nossa essência</p>
+          <h2 class="display" id="sobre-title">NOSSO CHURRASCO,<br><span class="accent">A SUA PAUSA</span><br>DE TODO DIA.</h2>
+        </div>
+        <div class="intro-side" data-reveal="right">
+          <p>Uma mesa reúne. A brasa aproxima. A conversa faz o resto.</p>
+          <p class="small">No Clube MESC, o Praça Nosso Churras chega como um espaço para associados, famílias e amigos compartilharem boa gastronomia e bons momentos.</p>
+          <a class="text-link" href="#experiencia">Conheça a proposta <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-band" aria-labelledby="convite-title">
+      <img src="assets/prato.jpg" alt="Prato servido no Praça Nosso Churras" loading="lazy" data-reveal="left">
+      <div class="photo-band-copy" data-reveal="right">
+        <p class="eyebrow">Para compartilhar</p>
+        <h2 id="convite-title">BONS MOMENTOS PEDEM UM LUGAR NOSSO.</h2>
+        <p>Entre um brinde e outro, a experiência acontece no ritmo da mesa: descontraída, acolhedora e feita para estar junto.</p>
+      </div>
+    </section>
+
+    <section class="offer section-inner" id="experiencia" aria-labelledby="experiencia-title">
+      <div class="offer-head" data-reveal>
+        <div>
+          <p class="eyebrow">O que nos move</p>
+          <h2 class="display" id="experiencia-title">BRASA. MESA.<br><span class="accent">CONEXÃO.</span></h2>
+        </div>
+        <p>Uma proposta que junta churrasco, gastronomia e o prazer de encontrar quem faz parte da sua história.</p>
+      </div>
+      <div class="offer-grid">
+        <article class="offer-card" data-reveal><span class="number">01 / SABOR</span><h3>CHURRASCO</h3><p>A brasa é o ponto de partida para uma experiência saborosa e sem pressa.</p></article>
+        <article class="offer-card" data-reveal style="--reveal-delay:80ms"><span class="number">02 / ACOLHIMENTO</span><h3>À VONTADE</h3><p>Um convite para trocar histórias, celebrar o dia e aproveitar a companhia.</p></article>
+        <article class="offer-card" data-reveal style="--reveal-delay:160ms"><span class="number">03 / ENCONTRO</span><h3>TODO MUNDO JUNTO</h3><p>Um espaço pensado para a convivência de associados, famílias e amigos.</p></article>
+      </div>
+    </section>
+
+    <section class="space section-inner" id="espaco" aria-labelledby="espaco-title">
+      <div class="space-title">
+        <h2 id="espaco-title">UM LUGAR PARA CHAMAR DE NOSSO.</h2>
+        <a class="text-link" href="https://www.instagram.com/pracanossochurrassbc/" target="_blank" rel="noopener noreferrer">Acompanhe no Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="space-main-photo"><img src="assets/restaurante-fachada.jpg" alt="Fachada do Praça Nosso Churras Gastrobar no Clube MESC" loading="lazy"></figure>
+      <div class="space-visual">
+        <figure><img src="assets/restaurante-jardim.jpg" alt="Área externa do Praça Nosso Churras no Clube MESC" loading="lazy"></figure>
+        <figure><img src="assets/drink.jpg" alt="Drink preparado no Praça Nosso Churras" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="visit" id="visite" aria-labelledby="visite-title">
+      <div class="visit-grid section-inner">
+        <div data-reveal>
+          <p class="eyebrow">Onde estamos</p>
+          <h2 id="visite-title">VEM PRO NOSSO.</h2>
+          <p class="visit-lead">Encontre o Praça Nosso Churras dentro do Clube MESC, em São Bernardo do Campo.</p>
+          <address><strong>Clube MESC</strong><span>Av. Robert Kennedy, 2113<br>Jardim Beatriz · São Bernardo do Campo, SP</span></address>
+          <div class="visit-actions">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Clube+MESC+Av.+Robert+Kennedy+2113+S%C3%A3o+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer"><span>Abrir rota no Google Maps</span></a>
+          </div>
+          <p class="access-note">O gastrobar fica dentro do clube. Antes de ir, <a href="https://mesc.com.br/sobre/" target="_blank" rel="noopener noreferrer">consulte as regras de acesso do MESC</a>.</p>
+        </div>
+        <div class="destination-card" aria-label="Destino: Clube MESC em São Bernardo do Campo" data-reveal="right">
+          <p class="eyebrow">Seu destino</p>
+          <strong>CLUBE<br>MESC<span style="color:var(--red)">.</span></strong>
+          <div class="destination-card-bottom"><span>Jardim Beatriz<br>São Bernardo do Campo · SP</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Clube+MESC+Av.+Robert+Kennedy+2113+S%C3%A3o+Bernardo+do+Campo" target="_blank" rel="noopener noreferrer">Ver no mapa ↗</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section-inner">
+      <div class="footer-main"><span class="footer-logo-frame"><img class="footer-logo" src="assets/logo-claro.png" alt="Praça Nosso Churras Gastrobar"></span><p class="footer-copy">NOSSO SABOR,<br>SEU PONTO DE ENCONTRO.</p></div>
+      <div class="footer-bottom"><p>© 2026 Praça Nosso Churras Gastrobar</p><p><a href="#inicio">Voltar ao topo</a></p></div>
+    </div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      nav.classList.toggle('is-open', open);
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menu');
+      nav.classList.remove('is-open');
+    }));
+
+    if ('IntersectionObserver' in window) {
+      const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(item => revealObserver.observe(item));
+
+      const syncMotion = () => {
+        document.documentElement.classList.toggle('motion-ready', !motionPreference.matches);
+      };
+      if (motionPreference.addEventListener) motionPreference.addEventListener('change', syncMotion);
+      else motionPreference.addListener(syncMotion);
+      syncMotion();
+    }
+  </script>
+</body>
+</html>
